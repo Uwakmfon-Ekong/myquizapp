@@ -52,8 +52,8 @@ body{
 cursor: no-drop;
 }
 #next-btn{
-    background: pink;
-    color: white;
+    background: white;
+    color: navy;
     font-weight: 500;
     width: 150px;
     border: 0;
