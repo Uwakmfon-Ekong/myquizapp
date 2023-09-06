@@ -26,13 +26,23 @@ const questions = [
       { text: "1993", correct: false },
     ],
   },
+
+  {
+    question: "What is the plural form of child?",
+    answers: [
+      { text: "childs", correct: false },
+      { text: "pikin", correct: false },
+      { text: "childes", correct: false },
+      { text: "Children", correct: true },
+    ],
+  },
   {
     question: "Which is my name?",
     answers: [
       { text: "wakki", correct: false },
       { text: "whakee", correct: false },
-      { text: "Whakee", correct: false },
-      { text: "Uwakmfon", correct: true},
+      { text: "Whake", correct: false },
+      { text: "Uwakmfon", correct: true },
     ],
   },
 ];
@@ -44,7 +54,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 
 function startQuiz() {
-    currentQuestionIndex = 0;
+    (currentQuestionIndex) = 0;
     score = 0;
     nextButton.innerHTML = "Next";
     showQuestion()
@@ -85,10 +95,32 @@ function selectAnswer(e) {
   Array.from(answerButtons.children).forEach(button => {
     if (button.dataset.correct === "true") {
       button.classList.add("correct")
+      score++;
     }
     button.disabled = true;
   });
   nextButton.style.display ="block"
 }
 
+function showScore() {
+  resetState();
+  questionElement.innerHTML = `you scored ${score} out of ${questions.length}!.`;
+  nextButton.innerHTML = `Play Again`;
+  nextButton.style.display = "block"
+}
+function handleNextButton() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
+}
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  } else {
+    startQuiz();
+  }
+})
 startQuiz();

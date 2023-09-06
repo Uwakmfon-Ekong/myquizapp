@@ -6,20 +6,21 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background: navy;
+    background: pink;
 }
 .app{
-    background: white;
+    background: navy;
     width: 90%;
     max-width: 600px;
     border-radius: 10px;
     padding: 30px;
     margin: 80px auto 0;
+    color: #fff;
 }
 .app h1{
     font-size: 25px;
     font-weight:600 ;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid white;
     padding-bottom: 30px;
 }
 .quiz{
@@ -43,12 +44,15 @@ body{
     cursor: pointer;
     transition: all 0.3 ease;
 }
-.btn:hover{
+.btn:hover:not([disabled]){
     background: #222;
     color: white;
 }
+.btn:disabled{
+cursor: no-drop;
+}
 #next-btn{
-    background: navy;
+    background: pink;
     color: white;
     font-weight: 500;
     width: 150px;
